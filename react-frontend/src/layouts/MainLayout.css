@@ -1,0 +1,18 @@
+.main-content {
+  margin-top: var(--header-height);
+  margin-left: var(--sidebar-width);
+
+  min-height: calc(100vh - var(--header-height));
+  padding: 20px;
+
+  display: flex;              /* 🔥 KEY */
+  flex-direction: column;     /* 🔥 KEY */
+
+  box-sizing: border-box;
+  background-color: #f8fafc;
+}
+
+/* Content area grows, footer stays bottom */
+.page-content {
+  flex: 1;                    /* 🔥 PUSHES FOOTER DOWN */
+}

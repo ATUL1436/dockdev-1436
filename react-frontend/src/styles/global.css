@@ -1,0 +1,14 @@
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+
+button {
+  cursor: pointer;
+}
+
+:root {
+  --header-height: 60px;
+  --sidebar-width: 220px;
+}

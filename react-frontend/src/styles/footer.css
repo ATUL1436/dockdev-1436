@@ -1,0 +1,10 @@
+.footer {
+  margin-left: var(--sidebar-width);
+  width: calc(100% - var(--sidebar-width));
+
+  background-color: #f60808;
+  padding: 15px;
+  text-align: center;
+
+  box-sizing: border-box;
+}

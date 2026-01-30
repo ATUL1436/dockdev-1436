@@ -1,0 +1,88 @@
+/* GLOBAL FIX – do this once (index.css or App.css) */
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* LOGIN PAGE */
+.login-page {
+  min-height: 100svh;              /* ✅ safer than 100vh */
+  width: 100%;
+  overflow: hidden;
+
+  background-image: url("../assets/raja1.jpg");
+  background-size: cover;          /* ✅ always fill screen */
+  background-position: center;
+  background-repeat: no-repeat;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  padding-left: clamp(20px, 8vw, 120px); /* ✅ responsive left space */
+  box-sizing: border-box;
+}
+
+/* LOGIN BOX */
+.login-box {
+  width: 360px;
+  padding: 30px;
+
+  background: rgba(239, 7, 154, 0.95);
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(246, 106, 6, 0.3);
+  text-align: center;
+}
+
+/* TEXT & INPUTS */
+.login-box h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 15px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  outline: none;
+}
+
+.login-box input:focus {
+  border-color: #007bff;
+}
+
+/* BUTTON */
+.login-box button {
+  width: 100%;
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-box button:hover {
+  background-color: #0056b3;
+}
+
+/* SIGNUP LINK */
+.signup-text {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.signup-text a {
+  color: #f4f00b;
+  font-weight: 800;
+  text-decoration: none;
+}
+.signup-text span {
+  color: #f4f00b;
+  font-weight: 800;
+  text-decoration: none;
+}

@@ -1,0 +1,63 @@
+services:
+  mysql:
+    image: mysql:8
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: your_db
+    ports:
+      - "3307:3306"
+    networks:
+      - dp
+
+  backend:
+    build: ./django_backend
+    container_name: backend
+    command: >
+      sh -c "
+      echo 'Waiting for MySQL...';
+      until mysqladmin ping -h mysql --protocol=tcp --silent; do
+        sleep 2;
+      done;
+      echo 'MySQL is up';
+      python manage.py migrate &&
+      python manage.py runserver 0.0.0.0:8000
+      "
+    ports:
+      - "8000:8000"
+    depends_on:
+      - mysql
+      - redis
+    networks:
+      - dp
+
+  celery:
+    container_name: celery
+    build: ./django_backend
+    command: celery -A django_backend worker -l info
+    depends_on:
+      - backend
+      - redis
+    networks:
+      - dp 
+
+  redis:
+    container_name: redis
+    image: redis:7
+    ports:
+      - "6379:6379"
+    networks:
+      - dp
+
+  frontend:
+    build: ./react-frontend
+    container_name: frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - backend
+    networks:
+      - dp
+
+networks:
+  dp:
